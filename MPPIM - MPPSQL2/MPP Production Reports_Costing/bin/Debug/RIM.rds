@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="RIM">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=cousql5;Initial Catalog=RIM</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>64e3ba3d-31a8-478b-a7d8-b7e18a27acd7</DataSourceID>
+</RptDataSource>

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="MPPIM">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=cousql1;Initial Catalog=MPPIM</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>cb4a168d-3ecb-45d7-b8ea-f69cbe4e7fb4</DataSourceID>
+</RptDataSource>

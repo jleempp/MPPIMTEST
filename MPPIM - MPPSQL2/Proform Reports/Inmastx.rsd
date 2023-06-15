@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Description />
+  <DataSet Name="Inmastx">
+    <Query>
+      <DataSourceReference>MPPSQL3_M2MDATA20</DataSourceReference>
+      <DataSetParameters>
+        <DataSetParameter Name="@StockCode">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>true</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandText>select fpartno, fcomment from inmastx where fpartno =@StockCode</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="fpartno">
+        <DataField>fpartno</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="fcomment">
+        <DataField>fcomment</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

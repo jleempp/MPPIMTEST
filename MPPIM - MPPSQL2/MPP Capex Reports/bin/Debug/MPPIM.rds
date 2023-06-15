@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="MPPIM">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=mppsql2\mppdw;Initial Catalog=MPPIM</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>8aeb1cd4-4409-4e6c-891d-095645757852</DataSourceID>
+</RptDataSource>

@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition">
+  <Description />
+  <DataSet Name="RIM">
+    <Query>
+      <DataSourceReference>MPPIM</DataSourceReference>
+      <DataSetParameters>
+        <DataSetParameter Name="@Location">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+        </DataSetParameter>
+        <DataSetParameter Name="@Factor">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>true</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+        </DataSetParameter>
+        <DataSetParameter Name="@Year">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+        </DataSetParameter>
+        <DataSetParameter Name="@Month">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandText>SELECT        LocationId, MonthEnd, Ledger, LedgerName, R12_EBITDA, R12_GrossMarginPercent, EntityValue, GrossMarginPercent, NWCTurnover, R12_InvoicedSales, 
+                         R12_GrossMargin, VA_SalesPerHourlyEE, VA_SalesPerSalaryEE, VA_SalesPerAllEE, InvTurns, NFA_Return, R12_EE_Hourly, R12_EE_Salary, R12_EE_All, 
+                         DLPercent, RMPercent, ScrapPercent, OSPPercent, HourlyWages_VASales, SalaryWages_VASales, SGAWages_VASales, AllWages_VASales, HourlyBen_VASales, 
+                         SalaryBen_VASales, SGABen_VASales, AllBen_VASales, AP_Days, AR_Days, R12_EBITDA_Change, NWC_Change, GM_Percent_Change, NFA_Return_Change, 
+                         ARDays_Change, APDays_Change, InvTurns_Change, DLPercent_Change, RMPercent_Change, ScrapPercent_Change, OSPPercent_Change, VASalesALL_Change, 
+                         VASalesHourly_Change, VASalesSalary_Change, ARAP_NetDays_Change, HourlyWages_VASales_Change, SalaryWages_VASales_Change, 
+                         SGAWages_VASales_Change, AllWages_VASales_Change, HourlyBen_VASales_Change, SalaryBen_VASales_Change, SGABen_VASales_Change, 
+                         AllBen_VASales_Change, R12_ExternalPPM_Change, R12_Safety_Change, R12_ExternalPPM, R12_Safety
+FROM           fin.fnt_RatioCharts(@Location, @Factor, @Year, @Month) AS fntRptMPP_RatioCharts_1</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="R12_EBITDA">
+        <DataField>R12_EBITDA</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="R12_EBITDA_Change">
+        <DataField>R12_EBITDA_Change</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="R12_GrossMarginPercent">
+        <DataField>R12_GrossMarginPercent</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="NWCTurnover">
+        <DataField>NWCTurnover</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="EntityValue">
+        <DataField>EntityValue</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="GrossMarginPercent">
+        <DataField>GrossMarginPercent</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="R12_InvoicedSales">
+        <DataField>R12_InvoicedSales</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="R12_GrossMargin">
+        <DataField>R12_GrossMargin</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="LocationId">
+        <DataField>LocationId</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="MonthEnd">
+        <DataField>MonthEnd</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="VA_SalesPerHourlyEE">
+        <DataField>VA_SalesPerHourlyEE</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="Ledger">
+        <DataField>Ledger</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="VA_SalesPerSalaryEE">
+        <DataField>VA_SalesPerSalaryEE</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="VA_SalesPerAllEE">
+        <DataField>VA_SalesPerAllEE</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="InvTurns">
+        <DataField>InvTurns</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="NFA_Return">
+        <DataField>NFA_Return</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="LedgerName">
+        <DataField>LedgerName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="R12_EE_Hourly">
+        <DataField>R12_EE_Hourly</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="R12_EE_Salary">
+        <DataField>R12_EE_Salary</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="R12_EE_All">
+        <DataField>R12_EE_All</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="DLPercent">
+        <DataField>DLPercent</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="RMPercent">
+        <DataField>RMPercent</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="ScrapPercent">
+        <DataField>ScrapPercent</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="AP_Days">
+        <DataField>AP_Days</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="AR_Days">
+        <DataField>AR_Days</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="NWC_Change">
+        <DataField>NWC_Change</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="GM_Percent_Change">
+        <DataField>GM_Percent_Change</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="NFA_Return_Change">
+        <DataField>NFA_Return_Change</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="ARAP_NetDays_Change">
+        <DataField>ARAP_NetDays_Change</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="VASalesSalary_Change">
+        <DataField>VASalesSalary_Change</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="VASalesHourly_Change">
+        <DataField>VASalesHourly_Change</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="VASalesALL_Change">
+        <DataField>VASalesALL_Change</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="OSPPercent_Change">
+        <DataField>OSPPercent_Change</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="ScrapPercent_Change">
+        <DataField>ScrapPercent_Change</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="RMPercent_Change">
+        <DataField>RMPercent_Change</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="DLPercent_Change">
+        <DataField>DLPercent_Change</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="InvTurns_Change">
+        <DataField>InvTurns_Change</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="ARDays_Change">
+        <DataField>ARDays_Change</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="APDays_Change">
+        <DataField>APDays_Change</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="OSPPercent">
+        <DataField>OSPPercent</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="AllBen_VASales">
+        <DataField>AllBen_VASales</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="HourlyWages_VASales">
+        <DataField>HourlyWages_VASales</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="SGABen_VASales">
+        <DataField>SGABen_VASales</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="SalaryWages_VASales">
+        <DataField>SalaryWages_VASales</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="SGAWages_VASales">
+        <DataField>SGAWages_VASales</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="SalaryBen_VASales">
+        <DataField>SalaryBen_VASales</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="HourlyBen_VASales">
+        <DataField>HourlyBen_VASales</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="AllWages_VASales">
+        <DataField>AllWages_VASales</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="HourlyWages_VASales_Change">
+        <DataField>HourlyWages_VASales_Change</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="SalaryWages_VASales_Change">
+        <DataField>SalaryWages_VASales_Change</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="SGAWages_VASales_Change">
+        <DataField>SGAWages_VASales_Change</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="AllWages_VASales_Change">
+        <DataField>AllWages_VASales_Change</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="HourlyBen_VASales_Change">
+        <DataField>HourlyBen_VASales_Change</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="SalaryBen_VASales_Change">
+        <DataField>SalaryBen_VASales_Change</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="SGABen_VASales_Change">
+        <DataField>SGABen_VASales_Change</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="AllBen_VASales_Change">
+        <DataField>AllBen_VASales_Change</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="R12_ExternalPPM_Change">
+        <DataField>R12_ExternalPPM_Change</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="R12_Safety_Change">
+        <DataField>R12_Safety_Change</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="R12_ExternalPPM">
+        <DataField>R12_ExternalPPM</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="R12_Safety">
+        <DataField>R12_Safety</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

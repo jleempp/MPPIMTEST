@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="MPPSP2013_Scrap">
+  <ConnectionProperties>
+    <Extension>SHAREPOINTLIST</Extension>
+    <ConnectString>https://sp.metalpowderproducts.com/sites/MPP/accounting/Lists/Bar Code Scrap List/Scrap.aspx </ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>5c6cfe97-0db7-4f21-bcb3-81e0cbce4c3a</DataSourceID>
+</RptDataSource>

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="RIMWIN">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=mppsql1;Initial Catalog=RIMWIN</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>aa816b8d-eaaa-4d72-8dfd-47f65793fb81</DataSourceID>
+</RptDataSource>

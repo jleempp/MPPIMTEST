@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Sharepoint">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=cousql5\sharepoint2010;Initial Catalog=RevereSharePoint</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>242bde43-97e6-42f9-866a-36b8d98ebf9b</DataSourceID>
+</RptDataSource>

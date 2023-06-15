@@ -1,0 +1,706 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <ReportItems>
+      <Tablix Name="Tablix1">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>10.375in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.25in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Subreport Name="Subreport1">
+                      <ReportName>MPP_Dashboard_Metrics</ReportName>
+                      <Parameters>
+                        <Parameter Name="Location">
+                          <Value>=Parameters!Location.Value</Value>
+                        </Parameter>
+                        <Parameter Name="Ledger">
+                          <Value>=Parameters!Ledger.Value</Value>
+                        </Parameter>
+                        <Parameter Name="Factor">
+                          <Value>=Parameters!Factor.Value</Value>
+                        </Parameter>
+                        <Parameter Name="Employees">
+                          <Value>=Parameters!Employees.Value</Value>
+                        </Parameter>
+                        <Parameter Name="Include">
+                          <Value>=Parameters!Include.Value</Value>
+                        </Parameter>
+                        <Parameter Name="Date">
+                          <Value>=DateSerial(Parameters!Year.Value, Parameters!Month.Value, "1").AddMonths(1).AddDays(-1)</Value>
+                        </Parameter>
+                        <Parameter Name="Wages">
+                          <Value>=Parameters!Wages.Value</Value>
+                        </Parameter>
+                      </Parameters>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                      </Style>
+                    </Subreport>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember />
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName>Dashboards</DataSetName>
+        <Top>0.36111in</Top>
+        <Height>0.25in</Height>
+        <Width>10.375in</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
+      <Tablix Name="Tablix3">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>10.375in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.25in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Subreport Name="Subreport4">
+                      <ReportName>MPP_Flex_Report_Sub</ReportName>
+                      <Parameters>
+                        <Parameter Name="Year">
+                          <Value>=Parameters!Year.Value</Value>
+                        </Parameter>
+                        <Parameter Name="Month">
+                          <Value>=Parameters!Month.Value</Value>
+                        </Parameter>
+                        <Parameter Name="Currency">
+                          <Value>=Parameters!Currency.Value</Value>
+                        </Parameter>
+                        <Parameter Name="Location">
+                          <Value>=Parameters!Location.Value</Value>
+                        </Parameter>
+                      </Parameters>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                      </Style>
+                    </Subreport>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember />
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName>vlLocations</DataSetName>
+        <Top>0.08333in</Top>
+        <Height>0.25in</Height>
+        <Width>10.375in</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
+    </ReportItems>
+    <Height>0.82166in</Height>
+    <Style />
+  </Body>
+  <Width>10.44792in</Width>
+  <Page>
+    <PageHeader>
+      <Height>0.5in</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="textbox271">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Parameters!Location.label</Value>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                    <Color>Red</Color>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>0.25in</Top>
+          <Left>2.91146in</Left>
+          <Height>0.125in</Height>
+          <Width>2.375in</Width>
+          <Style>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="textbox272">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Metal Powder Products - Flexed Financial Peformance Analysis</Value>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <Left>0.03646in</Left>
+          <Height>0.21in</Height>
+          <Width>5in</Width>
+          <ZIndex>1</ZIndex>
+          <Style>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="textbox266">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=MonthName(Parameters!Month.Value) + " " + Parameters!Year.Value.ToString</Value>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <Top>0.25in</Top>
+          <Left>0.03646in</Left>
+          <Height>0.125in</Height>
+          <Width>2.75in</Width>
+          <ZIndex>2</ZIndex>
+          <Style>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+        <BottomBorder>
+          <Style>Solid</Style>
+        </BottomBorder>
+      </Style>
+    </PageHeader>
+    <PageHeight>8.5in</PageHeight>
+    <PageWidth>11in</PageWidth>
+    <LeftMargin>0.25in</LeftMargin>
+    <RightMargin>0.25in</RightMargin>
+    <TopMargin>0.25in</TopMargin>
+    <BottomMargin>0.25in</BottomMargin>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="RIM">
+      <DataSourceReference>RIM</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>7a11ae1b-43f5-41f9-896e-971bb6a8e9b7</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="Dashboards">
+      <Query>
+        <DataSourceName>RIM</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@Location">
+            <Value>=Parameters!Location.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@Factor">
+            <Value>=Parameters!Factor.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@Date">
+            <Value>=Parameters!Date.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@Ledger">
+            <Value>=Parameters!Ledger.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT        LocationId, MonthEnd, Ledger, LedgerName, R12_EBITDA, R12_GrossMarginPercent, EntityValue, GrossMarginPercent, NWCTurnover, R12_InvoicedSales, 
+                         R12_GrossMargin, VA_SalesPerHourlyEE, VA_SalesPerSalaryEE, VA_SalesPerAllEE, InvTurns, NFA_Return, R12_EE_Hourly, R12_EE_Salary, R12_EE_All, 
+                         DLPercent, RMPercent, ScrapPercent, OSPPercent, HourlyWages_VASales, SalaryWages_VASales, SGAWages_VASales, AllWages_VASales, HourlyBen_VASales, 
+                         SalaryBen_VASales, SGABen_VASales, AllBen_VASales, AP_Days, AR_Days, R12_EBITDA_Change, NWC_Change, GM_Percent_Change, NFA_Return_Change, 
+                         ARDays_Change, APDays_Change, InvTurns_Change, DLPercent_Change, RMPercent_Change, ScrapPercent_Change, OSPPercent_Change, VASalesALL_Change, 
+                         VASalesHourly_Change, VASalesSalary_Change, ARAP_NetDays_Change, HourlyWages_VASales_Change, SalaryWages_VASales_Change, 
+                         SGAWages_VASales_Change, AllWages_VASales_Change, HourlyBen_VASales_Change, SalaryBen_VASales_Change, SGABen_VASales_Change, 
+                         AllBen_VASales_Change, R12_ExternalPPM_Change, R12_Safety_Change, R12_ExternalPPM, R12_Safety
+FROM            mpp.fntRptMPP_RatioCharts(@Location, @Factor, @Date, @Ledger) AS fntRptMPP_RatioCharts_1</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="LocationId">
+          <DataField>LocationId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MonthEnd">
+          <DataField>MonthEnd</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Ledger">
+          <DataField>Ledger</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LedgerName">
+          <DataField>LedgerName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="R12_EBITDA">
+          <DataField>R12_EBITDA</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="R12_GrossMarginPercent">
+          <DataField>R12_GrossMarginPercent</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="EntityValue">
+          <DataField>EntityValue</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="GrossMarginPercent">
+          <DataField>GrossMarginPercent</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="NWCTurnover">
+          <DataField>NWCTurnover</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="R12_InvoicedSales">
+          <DataField>R12_InvoicedSales</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="R12_GrossMargin">
+          <DataField>R12_GrossMargin</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="VA_SalesPerHourlyEE">
+          <DataField>VA_SalesPerHourlyEE</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="VA_SalesPerSalaryEE">
+          <DataField>VA_SalesPerSalaryEE</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="VA_SalesPerAllEE">
+          <DataField>VA_SalesPerAllEE</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="InvTurns">
+          <DataField>InvTurns</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="NFA_Return">
+          <DataField>NFA_Return</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="R12_EE_Hourly">
+          <DataField>R12_EE_Hourly</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="R12_EE_Salary">
+          <DataField>R12_EE_Salary</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="R12_EE_All">
+          <DataField>R12_EE_All</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DLPercent">
+          <DataField>DLPercent</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="RMPercent">
+          <DataField>RMPercent</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ScrapPercent">
+          <DataField>ScrapPercent</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="OSPPercent">
+          <DataField>OSPPercent</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="HourlyWages_VASales">
+          <DataField>HourlyWages_VASales</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="SalaryWages_VASales">
+          <DataField>SalaryWages_VASales</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="SGAWages_VASales">
+          <DataField>SGAWages_VASales</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="AllWages_VASales">
+          <DataField>AllWages_VASales</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="HourlyBen_VASales">
+          <DataField>HourlyBen_VASales</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="SalaryBen_VASales">
+          <DataField>SalaryBen_VASales</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="SGABen_VASales">
+          <DataField>SGABen_VASales</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="AllBen_VASales">
+          <DataField>AllBen_VASales</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="AP_Days">
+          <DataField>AP_Days</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="AR_Days">
+          <DataField>AR_Days</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="R12_EBITDA_Change">
+          <DataField>R12_EBITDA_Change</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="NWC_Change">
+          <DataField>NWC_Change</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="GM_Percent_Change">
+          <DataField>GM_Percent_Change</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="NFA_Return_Change">
+          <DataField>NFA_Return_Change</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ARDays_Change">
+          <DataField>ARDays_Change</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="APDays_Change">
+          <DataField>APDays_Change</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="InvTurns_Change">
+          <DataField>InvTurns_Change</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="DLPercent_Change">
+          <DataField>DLPercent_Change</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="RMPercent_Change">
+          <DataField>RMPercent_Change</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ScrapPercent_Change">
+          <DataField>ScrapPercent_Change</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="OSPPercent_Change">
+          <DataField>OSPPercent_Change</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="VASalesALL_Change">
+          <DataField>VASalesALL_Change</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="VASalesHourly_Change">
+          <DataField>VASalesHourly_Change</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="VASalesSalary_Change">
+          <DataField>VASalesSalary_Change</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ARAP_NetDays_Change">
+          <DataField>ARAP_NetDays_Change</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="HourlyWages_VASales_Change">
+          <DataField>HourlyWages_VASales_Change</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="SalaryWages_VASales_Change">
+          <DataField>SalaryWages_VASales_Change</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="SGAWages_VASales_Change">
+          <DataField>SGAWages_VASales_Change</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="AllWages_VASales_Change">
+          <DataField>AllWages_VASales_Change</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="HourlyBen_VASales_Change">
+          <DataField>HourlyBen_VASales_Change</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="SalaryBen_VASales_Change">
+          <DataField>SalaryBen_VASales_Change</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="SGABen_VASales_Change">
+          <DataField>SGABen_VASales_Change</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="AllBen_VASales_Change">
+          <DataField>AllBen_VASales_Change</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="R12_ExternalPPM_Change">
+          <DataField>R12_ExternalPPM_Change</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="R12_Safety_Change">
+          <DataField>R12_Safety_Change</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="R12_ExternalPPM">
+          <DataField>R12_ExternalPPM</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="R12_Safety">
+          <DataField>R12_Safety</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="vlLocations">
+      <Query>
+        <DataSourceName>RIM</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@IncludeAll">
+            <Value>False</Value>
+          </QueryParameter>
+          <QueryParameter Name="@DivisionId">
+            <Value>2</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>spvllocationsgL</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="DataValue">
+          <DataField>DataValue</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DisplayText">
+          <DataField>DisplayText</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="vlMonths">
+      <Query>
+        <DataSourceName>RIM</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@IncludeAll">
+            <Value>False</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>spvlglmonths</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="DataValue">
+          <DataField>DataValue</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DisplayText">
+          <DataField>DisplayText</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="vlYears">
+      <Query>
+        <DataSourceName>RIM</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>spvlglyears</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="DataValue">
+          <DataField>DataValue</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DisplayText">
+          <DataField>DisplayText</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportParameters>
+    <ReportParameter Name="Year">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>=year(today())</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Year</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>vlYears</DataSetName>
+          <ValueField>DataValue</ValueField>
+          <LabelField>DisplayText</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="Month">
+      <DataType>Integer</DataType>
+      <Prompt>Month</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>vlMonths</DataSetName>
+          <ValueField>DataValue</ValueField>
+          <LabelField>DisplayText</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="Currency">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>000</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Currency</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Location">
+      <DataType>String</DataType>
+      <Prompt>Location</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>vlLocations</DataSetName>
+          <ValueField>DataValue</ValueField>
+          <LabelField>DisplayText</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="Ledger">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>A</Value>
+        </Values>
+      </DefaultValue>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="Factor">
+      <DataType>Float</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>4.5</Value>
+        </Values>
+      </DefaultValue>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="Employees">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>1</Value>
+        </Values>
+      </DefaultValue>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="Include">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>3</Value>
+        </Values>
+      </DefaultValue>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="Date">
+      <DataType>DateTime</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>=DateSerial(Parameters!Year.Value, Parameters!Month.Value, "1").AddMonths(1).AddDays(-1)</Value>
+        </Values>
+      </DefaultValue>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="Wages">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>2</Value>
+        </Values>
+      </DefaultValue>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+  </ReportParameters>
+  <Language>en-US</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>58d4b528-1ab1-4ed4-83b2-048d7371c572</rd:ReportID>
+</Report>

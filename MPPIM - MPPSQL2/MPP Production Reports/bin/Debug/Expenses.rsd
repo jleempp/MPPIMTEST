@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition">
+  <Description />
+  <DataSet Name="Expenses">
+    <Query>
+      <DataSourceReference>MPPIM</DataSourceReference>
+      <CommandText>SELECT        LocationID, Source, Invoice, VendorID, RTRIM(VendorName) AS VendorName, StatusID, GLDate, InvoiceDate, StockCode, PO, QuantityInvoiced, UnitPrice, 
+                         ExtendedPrice, RTRIM(GLDebit) AS GLDebit, ReportLine, RLDescription, Budget, RTRIM(GLDesc) AS GLDesc
+FROM            gl.fnt_Expenses(@LocationID, @BeginDate, @EndDate) AS fntGL_Expenses_1
+where reportline in (@ReportLine)</CommandText>
+    </Query>
+  </DataSet>
+</SharedDataSet>

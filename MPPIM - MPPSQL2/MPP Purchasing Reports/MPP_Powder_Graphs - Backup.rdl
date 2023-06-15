@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="RIM">
+      <rd:DataSourceID>42a3e134-fdec-4dcb-83b5-74b7eddab35d</rd:DataSourceID>
+      <DataSourceReference>RIM</DataSourceReference>
+    </DataSource>
+  </DataSources>
+  <InteractiveHeight>11in</InteractiveHeight>
+  <ReportParameters>
+    <ReportParameter Name="BeginDate">
+      <DataType>DateTime</DataType>
+      <Prompt>BeginDate</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="EndDate">
+      <DataType>DateTime</DataType>
+      <Prompt>EndDate</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Location">
+      <DataType>String</DataType>
+      <Prompt>Location</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>vlLocation</DataSetName>
+          <ValueField>DataValue</ValueField>
+          <LabelField>DisplayText</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="StockCode">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Stock Code</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>8.5in</InteractiveWidth>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <RightMargin>0.25in</RightMargin>
+  <LeftMargin>0.25in</LeftMargin>
+  <BottomMargin>0.25in</BottomMargin>
+  <rd:ReportID>e19ba92e-6303-4538-b303-2a2b6c5711d1</rd:ReportID>
+  <PageWidth>11in</PageWidth>
+  <DataSets>
+    <DataSet Name="RIM">
+      <Fields>
+        <Field Name="LocationId">
+          <DataField>LocationId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Invoice">
+          <DataField>Invoice</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="VendorId">
+          <DataField>VendorId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Company">
+          <DataField>Company</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="InvoiceDate">
+          <DataField>InvoiceDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="StockingUnitOfMeasure">
+          <DataField>StockingUnitOfMeasure</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="QuantityInvoiced">
+          <DataField>QuantityInvoiced</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="UnitPrice">
+          <DataField>UnitPrice</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Amount">
+          <DataField>Amount</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Description">
+          <DataField>Description</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="StockCode">
+          <DataField>StockCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LineNumber">
+          <DataField>LineNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="StockCodeName">
+          <DataField>StockCodeName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductClassId">
+          <DataField>ProductClassId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LocationName">
+          <DataField>LocationName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Date">
+          <DataField>Date</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>RIM</DataSourceName>
+        <CommandText>SELECT     a.LocationId, a.Invoice, a.VendorId, a.Company, a.InvoiceDate, b.StockingUnitOfMeasure, b.QuantityInvoiced, b.UnitPrice, 
+                      b.UnitPrice * b.QuantityInvoiced AS Amount, b.Description, b.StockCode, b.LineNumber, c.StockCodeName, c.ProductClassId, d.LocationName, 
+                      CAST(RIGHT('0' + CAST(MONTH(a.InvoiceDate) AS VARCHAR(2)), 2) + '/' + RIGHT('0' + CAST(1 AS VARCHAR(2)), 2) + '/' + CAST(YEAR(a.InvoiceDate) 
+                      AS char(4)) AS datetime) AS Date
+FROM         purInvoiceHeader AS a INNER JOIN
+                      purInvoiceDetail AS b ON a.LocationId = b.LocationId AND a.Invoice = b.Invoice AND a.VendorId = b.VendorId INNER JOIN
+                      invStockCodesNames AS c ON a.LocationId = c.LocationId AND b.StockCode = c.StockCode INNER JOIN
+                      sysLocations AS d ON a.LocationId = d.LocationId AND c.LocationId = d.LocationId
+WHERE     (a.InvoiceDate BETWEEN @BeginDate AND @EndDate) AND (c.StatusId = 'A') AND (c.ProductClassId = '04' OR
+                      c.ProductClassId = '05' OR
+                      c.ProductClassId = '44' OR
+                      c.ProductClassId = '45' OR
+                      c.ProductClassId = '15') AND (a.LocationId IN (@Location)) AND (b.StockCode = @StockCode)
+ORDER BY Date</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@BeginDate">
+            <Value>=Parameters!BeginDate.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@EndDate">
+            <Value>=Parameters!EndDate.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@Location">
+            <Value>=Parameters!Location.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@StockCode">
+            <Value>=Parameters!StockCode.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </Query>
+    </DataSet>
+    <DataSet Name="vlLocation">
+      <Fields>
+        <Field Name="DataValue">
+          <DataField>DataValue</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DisplayText">
+          <DataField>DisplayText</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>RIM</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>spVlLocations</CommandText>
+      </Query>
+    </DataSet>
+  </DataSets>
+  <Code />
+  <Width>10.125in</Width>
+  <Body>
+    <ReportItems>
+      <Textbox Name="textbox2">
+        <Top>0.375in</Top>
+        <Width>9.125in</Width>
+        <Style>
+          <FontFamily>Tahoma</FontFamily>
+          <FontWeight>700</FontWeight>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>3</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Height>0.25in</Height>
+        <Value>="Part Number - " &amp; Parameters!StockCode.value &amp; " - " &amp; First(Fields!StockCodeName.Value, "RIM")</Value>
+      </Textbox>
+      <Textbox Name="textbox1">
+        <Top>0.625in</Top>
+        <Width>9.125in</Width>
+        <Style>
+          <FontFamily>Tahoma</FontFamily>
+          <FontWeight>700</FontWeight>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>2</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Height>0.25in</Height>
+        <Value>="Between " &amp; Parameters!BeginDate.Value &amp; " and " &amp; Parameters!EndDate.Value</Value>
+      </Textbox>
+      <Textbox Name="textbox16">
+        <Width>9.375in</Width>
+        <Style>
+          <Color>Navy</Color>
+          <FontFamily>Tahoma</FontFamily>
+          <FontSize>20pt</FontSize>
+          <FontWeight>700</FontWeight>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>1</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Height>0.36in</Height>
+        <Value>="Metal Powder Products - " &amp; Join(Parameters!Location.Label,", ")</Value>
+      </Textbox>
+      <CustomReportItem Name="chart1">
+        <Type>Chart</Type>
+        <Top>0.875in</Top>
+        <Left>0.375in</Left>
+        <CustomProperties>
+          <CustomProperty>
+            <Name>Appearance</Name>
+            <Value>77u/PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxDRlg3Pg0KCTxQTE9UQVJFQUNPTE9SPlRyYW5zcGFyZW50PC9QTE9UQVJFQUNPTE9SPg0KCTxQQU5FUz4NCgkJPElURU0gaW5kZXg9IjAiPg0KCQkJPEFYRVM+DQoJCQkJPElURU0gaW5kZXg9IjAiPg0KCQkJCQk8TEFCRUxTRk9STUFUPg0KCQkJCQkJPEZPUk1BVD5OdW1iZXI8L0ZPUk1BVD4NCgkJCQkJCTxERUNJTUFMUz40PC9ERUNJTUFMUz4NCgkJCQkJPC9MQUJFTFNGT1JNQVQ+DQoJCQkJCTxGT05UPg0KCQkJCQkJPEJPTEQ+VHJ1ZTwvQk9MRD4NCgkJCQkJPC9GT05UPg0KCQkJCQk8VElUTEU+DQoJCQkJCQk8VEVYVD5Vbml0IFByaWNlPC9URVhUPg0KCQkJCQk8L1RJVExFPg0KCQkJCTwvSVRFTT4NCgkJCQk8SVRFTSBpbmRleD0iMSIvPg0KCQkJPC9BWEVTPg0KCQk8L0lURU0+DQoJPC9QQU5FUz4NCgk8QVhFU1g+DQoJCTxJVEVNIGluZGV4PSIwIj4NCgkJCTxTVFlMRT5TaW5nbGVMaW5lLCBCcmVha1plcm8sIExvbmdUaWNrLCBBdXRvU2NhbGUsIEZvcmNlWmVybywgUm91bmRTdGVwLCBEZXRlY3RBcmVhLCBBdXRvTWlub3JTdGVwLCBBdXRvRmlyc3RMYWJlbCwgQXV0b0NlbnRlciwgQWxsb3dIYWxmLCBIaWdobGlnaHRWYWx1ZXM8L1NUWUxFPg0KCQkJPExBQkVMU0ZPUk1BVD4NCgkJCQk8Rk9STUFUPkRhdGU8L0ZPUk1BVD4NCgkJCTwvTEFCRUxTRk9STUFUPg0KCQkJPEZPTlQ+DQoJCQkJPEJPTEQ+VHJ1ZTwvQk9MRD4NCgkJCTwvRk9OVD4NCgkJCTxUSVRMRT4NCgkJCQk8VEVYVD5EYXRlPC9URVhUPg0KCQkJPC9USVRMRT4NCgkJPC9JVEVNPg0KCTwvQVhFU1g+DQoJPEFMTFNFUklFUz4NCgkJPFBPSU5UTEFCRUxTPg0KCQkJPFZJU0lCTEU+VHJ1ZTwvVklTSUJMRT4NCgkJPC9QT0lOVExBQkVMUz4NCgkJPEdBTExFUllBUlJBWSB0eXBlPSJDaGFydEZYLlJlcG9ydGluZ1NlcnZpY2VzLkludGVybmFsLklHYWxsZXJ5VHlwZVtdIj4NCgkJCTxJVEVNIGluZGV4PSIwIiB0eXBlPSJDaGFydEZYLlJlcG9ydGluZ1NlcnZpY2VzLkdhbGxlcmllcy5MaW5lIi8+DQoJCTwvR0FMTEVSWUFSUkFZPg0KCQk8UE9JTlRMQUJFTE9SR0FOSVpFUj4NCgkJCTxFTkFCTEVEPlRydWU8L0VOQUJMRUQ+DQoJCQk8QVVUT0FSUkFOR0U+VHJ1ZTwvQVVUT0FSUkFOR0U+DQoJCTwvUE9JTlRMQUJFTE9SR0FOSVpFUj4NCgk8L0FMTFNFUklFUz4NCgk8U0VSSUVTPg0KCQk8SVRFTSBpbmRleD0iMCI+DQoJCQk8VEVYVD5Mb2NhdGlvbklkIDA8L1RFWFQ+DQoJCTwvSVRFTT4NCgkJPElURU0gaW5kZXg9IjEiPg0KCQkJPFRFWFQ+TG9jYXRpb25JZCAxPC9URVhUPg0KCQk8L0lURU0+DQoJCTxJVEVNIGluZGV4PSIyIj4NCgkJCTxURVhUPkxvY2F0aW9uSWQgMjwvVEVYVD4NCgkJPC9JVEVNPg0KCTwvU0VSSUVTPg0KCTxMRUdFTkRCT1g+DQoJCTxWSVNJQkxFPkZhbHNlPC9WSVNJQkxFPg0KCTwvTEVHRU5EQk9YPg0KCTxCT1JERVIgdHlwZT0iQ2hhcnRGWC5SZXBvcnRpbmdTZXJ2aWNlcy5BZG9ybm1lbnRzLkltYWdlQm9yZGVyIiBhc3NlbWJseT0iQ2hhcnRGWC5SZXBvcnRpbmdTZXJ2aWNlcy5BZG9ybm1lbnRzLCBWZXJzaW9uPTcuMC4yODQ3LjIzNDUwLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWExODc4ZTIwNTJjMDhkY2UiPg0KCQk8Q09MT1I+I2ZmNmQ3ZDhhPC9DT0xPUj4NCgk8L0JPUkRFUj4NCgk8QkFDS0dST1VORCB0eXBlPSJDaGFydEZYLlJlcG9ydGluZ1NlcnZpY2VzLkFkb3JubWVudHMuR3JhZGllbnRCYWNrZ3JvdW5kIiBhc3NlbWJseT0iQ2hhcnRGWC5SZXBvcnRpbmdTZXJ2aWNlcy5BZG9ybm1lbnRzLCBWZXJzaW9uPTcuMC4yODQ3LjIzNDUwLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWExODc4ZTIwNTJjMDhkY2UiPg0KCQk8Q09MT1JTIHR5cGU9IkNoYXJ0RlguUmVwb3J0aW5nU2VydmljZXMuQWRvcm5tZW50cy5HcmFkaWVudEJhY2tncm91bmQrQ29sb3JDb2xsZWN0aW9uIiBhc3NlbWJseT0iQ2hhcnRGWC5SZXBvcnRpbmdTZXJ2aWNlcy5BZG9ybm1lbnRzLCBWZXJzaW9uPTcuMC4yODQ3LjIzNDUwLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWExODc4ZTIwNTJjMDhkY2UiLz4NCgk8L0JBQ0tHUk9VTkQ+DQoJPERBVEFTT1VSQ0VTRVRUSU5HUz4NCgkJPEZJRUxEUz4NCgkJCTxJVEVNPg0KCQkJCTxOQU1FPkxvY2F0aW9uSWQ8L05BTUU+DQoJCQkJPERJU1BMQVlOQU1FPkxvY2F0aW9uSWQ8L0RJU1BMQVlOQU1FPg0KCQkJCTxVU0FHRT5Db2x1bW5IZWFkaW5nPC9VU0FHRT4NCgkJCTwvSVRFTT4NCgkJCTxJVEVNPg0KCQkJCTxOQU1FPlVuaXRQcmljZTwvTkFNRT4NCgkJCQk8RElTUExBWU5BTUU+VW5pdFByaWNlPC9ESVNQTEFZTkFNRT4NCgkJCQk8VVNBR0U+VmFsdWU8L1VTQUdFPg0KCQkJPC9JVEVNPg0KCQkJPElURU0+DQoJCQkJPE5BTUU+RGF0ZTwvTkFNRT4NCgkJCQk8RElTUExBWU5BTUU+RGF0ZTwvRElTUExBWU5BTUU+DQoJCQkJPFVTQUdFPlJvd0hlYWRpbmc8L1VTQUdFPg0KCQkJPC9JVEVNPg0KCQk8L0ZJRUxEUz4NCgk8L0RBVEFTT1VSQ0VTRVRUSU5HUz4NCjwvQ0ZYNz4NCg==</Value>
+          </CustomProperty>
+          <CustomProperty>
+            <Name>DataCompacting</Name>
+            <Value>0</Value>
+          </CustomProperty>
+          <CustomProperty>
+            <Name>Data</Name>
+            <Value>LocationId:System.Double,UnitPrice:System.Double,Date:System.DateTime</Value>
+          </CustomProperty>
+          <CustomProperty>
+            <Name>CrossTab</Name>
+            <Value>True</Value>
+          </CustomProperty>
+        </CustomProperties>
+        <CustomData>
+          <DataSetName>RIM</DataSetName>
+          <DataColumnGroupings>
+            <DataGroupings>
+              <DataGrouping>
+                <Static>true</Static>
+              </DataGrouping>
+            </DataGroupings>
+          </DataColumnGroupings>
+          <DataRowGroupings>
+            <DataGroupings>
+              <DataGrouping>
+                <Grouping Name="chart1_Fields">
+                  <GroupExpressions>
+                    <GroupExpression>=Fields!LocationId.Value</GroupExpression>
+                    <GroupExpression>=Fields!UnitPrice.Value</GroupExpression>
+                    <GroupExpression>=Fields!Date.Value</GroupExpression>
+                  </GroupExpressions>
+                </Grouping>
+              </DataGrouping>
+            </DataGroupings>
+          </DataRowGroupings>
+          <DataRows>
+            <DataRow>
+              <DataCell>
+                <DataValue>
+                  <Name>Data</Name>
+                  <Value>0</Value>
+                </DataValue>
+              </DataCell>
+            </DataRow>
+          </DataRows>
+        </CustomData>
+      </CustomReportItem>
+    </ReportItems>
+    <Height>7.25in</Height>
+  </Body>
+  <Language>en-US</Language>
+  <TopMargin>0.25in</TopMargin>
+  <PageHeight>8.5in</PageHeight>
+</Report>

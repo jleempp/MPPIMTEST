@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="FetchCRMShared">
+  <ConnectionProperties>
+    <Extension>MSCRMFETCH</Extension>
+    <ConnectString>https://disco.crm.dynamics.com/;org9b8f1dea</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>22510da6-4f64-4cc2-a91d-3493001159ff</DataSourceID>
+</RptDataSource>

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="MPPCRM_2013">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=MPPSQL1\MSCRM;Initial Catalog=MPP_MSCRM_RIM</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>884a3b07-b30e-48ae-bf81-b183fc3970b5</DataSourceID>
+</RptDataSource>

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="MPPSP2013">
+  <ConnectionProperties>
+    <Extension>SHAREPOINTLIST</Extension>
+    <ConnectString>https://sp.metalpowderproducts.com/sites/MPP/accounting/Ridgway%20Employees</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>56af3a96-802d-484f-923f-42aafcf02e75</DataSourceID>
+</RptDataSource>
